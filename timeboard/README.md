@@ -10,7 +10,7 @@ Usage
 
 ```hcl
 module "timeboard_elb_beical-lbint-01" {
-  source         = "github.com/traveloka/terraform-datadog-elb.git//timeboard"
+  source         = "github.com/traveloka/terraform-datadog-elb//timeboard"
   product_domain = "BEI"
   lb_name        = "beical-lbint"
   lb_type        = "application" //Either application or classic for now
@@ -20,8 +20,8 @@ module "timeboard_elb_beical-lbint-01" {
 Terraform Version
 -----------------
 
-This module was created using Terraform 0.11.5. 
-So to be more safe, Terraform version 0.11.5 or newer is required to use this module.
+This module was created using Terraform 0.11.7. 
+So to be more safe, Terraform version 0.11.7 or newer is required to use this module.
 
 Authors
 -------

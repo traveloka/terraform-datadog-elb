@@ -3,7 +3,7 @@ locals {
 }
 
 module "elb_application_healthy_host_count" {
-  source  = "github.com/traveloka/terraform-datadog-monitor?ref=v0.1.3"
+  source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${local.enabled_elb_application}"
 
   product_domain = "${var.product_domain}"

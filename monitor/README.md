@@ -7,8 +7,8 @@ Terraform module for Datadog Monitor ELB.
 
 Usage
 -----
-* [Simple Example](https://github.com/traveloka/terraform-datadog-monitor-elb/tree/master/examples/simple)
-* [Complete Example](https://github.com/traveloka/terraform-datadog-monitor-elb/tree/master/examples/complete)
+* [Simple Example](https://github.com/traveloka/terraform-datadog-elb/tree/master/monitor/examples/simple)
+* [Complete Example](https://github.com/traveloka/terraform-datadog-elb/tree/master/monitor/examples/complete)
 
 Terraform Version
 -----------------

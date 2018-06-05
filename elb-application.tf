@@ -187,14 +187,19 @@ module "elb_application_monitor_healthy_host_count" {
   product_domain = "${var.product_domain}"
   service        = "${var.service}"
   environment    = "${var.environment}"
+  tags           = "${var.tags}"
+  timeboard_id   = "${join(",", datadog_timeboard.elb_application.*.id)}"
 
   name               = "${var.product_domain} - ${var.lb_name} - ${var.environment} - Number of Healthy Hosts is Low"
   query              = "avg(last_1m):sum:aws.applicationelb.healthy_host_count{name:${var.lb_name}, environment:${var.environment}} by {name, availability-zone} <= ${var.healthy_host_count_thresholds["critical"]}"
   thresholds         = "${var.healthy_host_count_thresholds}"
+  evaluation_delay   = "900"
   message            = "${var.healthy_host_count_message}"
   escalation_message = "${var.healthy_host_count_escalation_message}"
 
-  recipients = "${var.recipients}"
+  recipients         = "${var.recipients}"
+  alert_recipients   = "${var.alert_recipients}"
+  warning_recipients = "${var.warning_recipients}"
 
   renotify_interval = "${var.renotify_interval}"
   notify_audit      = "${var.notify_audit}"

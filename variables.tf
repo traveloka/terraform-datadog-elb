@@ -30,10 +30,28 @@ variable "environment" {
   description = "The name of the environment"
 }
 
+variable "tags" {
+  type        = "list"
+  default     = []
+  description = "Additional tags for monitors"
+}
+
 variable "recipients" {
   type        = "list"
   default     = []
-  description = "Notification recipients when monitor triggered"
+  description = "Notification recipients when both alert and warning are triggered"
+}
+
+variable "alert_recipients" {
+  type        = "list"
+  default     = []
+  description = "Notification recipients when only alert is triggered"
+}
+
+variable "warning_recipients" {
+  type        = "list"
+  default     = []
+  description = "Notification recipients when only warning is triggered"
 }
 
 variable "renotify_interval" {

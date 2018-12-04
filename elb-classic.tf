@@ -249,7 +249,7 @@ module "elb_classic_monitor_healthy_host_count" {
   timeboard_id   = "${join(",", datadog_timeboard.elb_classic.*.id)}"
 
   name               = "${var.product_domain} - ${var.lb_name} - ${var.environment} - Number of Healthy Hosts is Low"
-  query              = "avg(last_1m):sum:aws.elb.healthy_host_count{name:${var.lb_name}, environment:${var.environment}} by {name, availability-zone} <= ${var.healthy_host_count_thresholds["critical"]}"
+  query              = "avg(last_1m):sum:aws.elb.healthy_host_count{name:${var.lb_name}, environment:${var.environment}} by {name} <= ${var.healthy_host_count_thresholds["critical"]}"
   thresholds         = "${var.healthy_host_count_thresholds}"
   evaluation_delay   = "900"
   message            = "${var.healthy_host_count_message}"

@@ -248,7 +248,9 @@ module "elb_classic_monitor_healthy_host_count" {
   tags           = "${var.tags}"
   timeboard_id   = "${join(",", datadog_timeboard.elb_classic.*.id)}"
 
-  name               = "${var.product_domain} - ${var.lb_name} - ${var.environment} - Number of Healthy Hosts is Low"
+  name               = "${var.healthy_host_name != "" ? 
+                        "${var.healthy_host_name}" : 
+                        "${var.product_domain} - ${var.lb_name} - ${var.environment} - Number of Healthy Hosts is Low"}"
   query              = "avg(last_1m):sum:aws.elb.healthy_host_count{name:${var.lb_name}, environment:${var.environment}} by {name} <= ${var.healthy_host_count_thresholds["critical"]}"
   thresholds         = "${var.healthy_host_count_thresholds}"
   evaluation_delay   = "900"
@@ -261,4 +263,5 @@ module "elb_classic_monitor_healthy_host_count" {
 
   renotify_interval = "${var.renotify_interval}"
   notify_audit      = "${var.notify_audit}"
+  include_tags      = "${var.healthy_host_include_tags}"
 }

@@ -66,6 +66,12 @@ variable "notify_audit" {
   description = "Whether any configuration changes should be notified"
 }
 
+variable "healthy_host_name" {
+  type        = "string"
+  default     = ""
+  description = "The name for ELB Healthy Host Count Monitor, else use default"
+}
+
 variable "healthy_host_count_thresholds" {
   type = "map"
 
@@ -86,4 +92,10 @@ variable "healthy_host_count_escalation_message" {
   type        = "string"
   default     = ""
   description = "The escalation message when ELB Healthy Host Count monitor isn't resolved for given time"
+}
+
+variable "healthy_host_include_tags" {
+  type        = "string"
+  default     = true
+  description = "The flag to include tags in name for ELB Healthy Host Count Monitor"
 }
